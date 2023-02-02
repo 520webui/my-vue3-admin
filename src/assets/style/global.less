@@ -43,3 +43,46 @@ a {
 
 
 @primary-color: #5878e2; // 主题色
+
+/*============  start: 滚动条 ===========*/
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+/* 滚动条两端的按钮 */
+::-webkit-scrollbar-button {
+  display: none;
+
+}
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #fff;
+}
+/* 滚动的滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+}
+/* 边角 */
+::-webkit-scrollbar-corner {
+  display: none;
+}
+/* 右下角拖动块 */
+::-webkit-resizer {
+  display: none;
+}
+/*============  end: 滚动条 ===========*/
+
+/*============  start: 浮动 ===========*/
+/*清除浮动开始*/
+.clearfix:before,.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+/*============  end: 浮动 ===========*/

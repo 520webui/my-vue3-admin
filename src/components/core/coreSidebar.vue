@@ -5,12 +5,32 @@
              :class="[{'targetActive':index === $store.state.theTargetIndex}]"
              @click="clickHandle(item,index)">
             <div class="the-menu-item">
-                <span>
+              <el-tooltip
+                  v-if="store.state.isCollapse"
+                  class="box-item"
+                  effect="dark"
+                  :content=item.text
+                  placement="right"
+              >
+                <span :class="[{'isCollapseWidth':store.state.isCollapse}]">
                     <el-icon>
                         <component :is="item.icon" />
                     </el-icon>
                 </span>
-                <span v-if="!store.state.isCollapse">{{item.text}}</span>
+              </el-tooltip>
+              <span v-else>
+                 <el-icon>
+                        <component :is="item.icon" />
+                    </el-icon>
+              </span>
+                <el-tooltip
+                    class="box-item"
+                    effect="dark"
+                    :content=item.text
+                    placement="right"
+                >
+                  <span v-if="!store.state.isCollapse">{{item.text}}</span>
+                </el-tooltip>
             </div>
         </div>
     </div>
@@ -183,6 +203,9 @@ export default defineComponent({
                   width:1em;
                   height:1em;
               }
+          }
+          span:nth-of-type(1).isCollapseWidth{
+            width: 100%;
           }
           span:nth-of-type(2){
               width: 85%;
