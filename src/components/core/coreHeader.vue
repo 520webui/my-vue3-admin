@@ -23,6 +23,13 @@
                     <div v-for="(item,index) in langList" :key="index" class="lang-list-item" @click="handleSetLanguage(item.value)">{{item.name}}</div>
                 </div>
             </div>
+            <div class="user-info">
+                {{'个人信息'}}
+                <div class="info-list">
+                    <div>{{'部门信息'}}</div>
+                    <div @click="logout">{{'退出'}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -30,9 +37,11 @@
 <script lang="ts">
 import {reactive, defineComponent, onMounted, ref, toRefs,computed} from 'vue';
 import { useStore } from "vuex"
+import {useRouter} from "vue-router";
 export default defineComponent({
   setup() {
     const store = useStore()
+    const router = useRouter();
     const dataMap = reactive({
         langList: [
             {
@@ -66,12 +75,17 @@ export default defineComponent({
     const handleCollapse=()=>{
         dataMap.collapse = !dataMap.collapse;
         store.state.isCollapse = !store.state.isCollapse;
+    };
+    const logout = () => {
+      localStorage.removeItem('loginToken');
+      router.push('/login');
     }
     onMounted(()=>{})
     return{
       ...toRefs(dataMap),
       handleSetLanguage,
       handleCollapse,
+      logout,
       lang,
       store
     }
@@ -155,14 +169,34 @@ export default defineComponent({
               }
             }
         }
-      .the-language:hover{
-          .the-lang{
-            color: #0e6de9;
+        .user-info{
+          position: absolute;
+          right: 0;
+          cursor: pointer;
+          width: 100px;
+          .info-list{
+            display: none;
+            position: absolute;
+            right: 0;
+            bottom: -120px;
+            background: #0F5080;
+            padding: 10px;
+            z-index: 11;
           }
-          .lang-list{
+        }
+        .the-language:hover{
+            .the-lang{
+              color: #0e6de9;
+            }
+            .lang-list{
+              display: block;
+            }
+        }
+        .user-info:hover{
+          .info-list{
             display: block;
           }
-      }
+        }
     }
   }
 </style>
