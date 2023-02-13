@@ -662,7 +662,7 @@
         width: 98%;
         height: 100%;
         overflow-y: auto;
-        background: url("./images/bg.png") no-repeat;
+        background: url("images/bg.png") no-repeat;
         background-size: 100% 100%;
         font-size: 0.2rem;
         cursor: pointer;

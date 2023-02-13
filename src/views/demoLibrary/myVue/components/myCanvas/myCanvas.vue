@@ -9,7 +9,7 @@
     import {reactive, defineComponent, onMounted, ref, toRefs,computed,watch,defineProps } from 'vue';
     import { useStore } from "vuex"
     import { useRouter } from 'vue-router'
-    import cavasImg from "@/views/myVue/images/cavas-img.png"
+    import cavasImg from "@/views/demoLibrary/myVue/images/cavas-img.png"
     export default defineComponent({
       setup(props, contex) {
         const dataMap = reactive({})

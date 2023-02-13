@@ -1,17 +1,16 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-
+import {  RouteRecordRaw, createRouter, createWebHashHistory, createWebHistory } from "vue-router"
 // @ts-ignore
-const routes: Array<RouteRecordRaw> = [
+const constantRoutes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'home',
-        component: () => import("@/views/home.vue"),
+        component: () => import("@/views/demoLibrary/home.vue"),
         redirect: "/myVue",
         children: [
             {
                 path: '/myVue',
                 name: 'myVue',
-                component: () => import('@/views/myVue/myVue.vue'),
+                component: () => import('@/views/demoLibrary/myVue/myVue.vue'),
                 meta: {
                     title: 'myVue',
                     langTitle: 'myVue'
@@ -20,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/canvas',
                 name: 'canvas',
-                component: () => import('@/views/canvas/canvas.vue'),
+                component: () => import('@/views/demoLibrary/canvas/canvas.vue'),
                 meta: {
                     title: 'canvas',
                     langTitle: 'canvas'
@@ -29,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/threeJs',
                 name: 'threeJs',
-                component: () => import('@/views/threeJs/threeJs.vue'),
+                component: () => import('@/views/demoLibrary/threeJs/threeJs.vue'),
                 meta: {
                     title: 'threeJs',
                     langTitle: 'threeJs'
@@ -37,10 +36,17 @@ const routes: Array<RouteRecordRaw> = [
             },
         ]
     },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import("@/views/index/index.vue"),
+        meta: {
+            hidden: true
+        }
+    }
 ];
-
 const router = createRouter({
     history: createWebHistory(),
-    routes,
+    routes:constantRoutes,
 });
 export default router;

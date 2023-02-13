@@ -31,9 +31,9 @@
     import {reactive, defineComponent, onMounted, ref, toRefs,computed,watch } from 'vue';
     import { useStore } from "vuex"
     import { useRouter } from 'vue-router'
-    import theScrollBox from "@/views/myVue/components/theScrollBox/scrollBox.vue"
-    import myCanvas from "@/views/myVue/components/myCanvas/myCanvas.vue"
-    import fillRectCanvas from "@/views/myVue/components/myCanvas/fillRectCanvas.vue"
+    import theScrollBox from "@/views/demoLibrary/myVue/components/theScrollBox/scrollBox.vue"
+    import myCanvas from "@/views/demoLibrary/myVue/components/myCanvas/myCanvas.vue"
+    import fillRectCanvas from "@/views/demoLibrary/myVue/components/myCanvas/fillRectCanvas.vue"
     export default defineComponent({
       components: {
         theScrollBox,myCanvas,fillRectCanvas

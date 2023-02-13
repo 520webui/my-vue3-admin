@@ -38,7 +38,7 @@ import {reactive, defineComponent, onMounted, ref, toRefs} from 'vue';
 import CoreHeader from "@/components/core/coreHeader.vue";
 import CoreSidebar from "@/components/core/coreSidebar.vue";
 import CoreTagsNav from "@/components/core/coreTagsNav.vue";
-import keepAlive from '../keepAlive';
+import keepAlive from './../../keepAlive';
 import { useStore } from "vuex"
 export default defineComponent({
   components: {CoreTagsNav, CoreHeader,CoreSidebar},

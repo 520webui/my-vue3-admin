@@ -5,6 +5,7 @@ import App from './App.vue'
 import { i18n } from '@/lang/index';
 import store from "@/store/index";
 import router from '@/router/index'
+import "@/router/permission"
 import "./assets/style/global.less";
 import "@/utils/rem";
 import ElementPlus from 'element-plus'
