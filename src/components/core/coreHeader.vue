@@ -13,9 +13,11 @@
             </div>
         </div>
         <div class="the-user">
-            <div class="user-name">
-                <i class="el-icon-s-custom"/> zero
+            <!--主题切换-->
+            <div class="user-theme">
+              <change-theme/>
             </div>
+            <!--语言切换-->
             <div class="the-language">
                 <div class="icon"></div>
                 <div class="the-lang">{{lang}}</div>
@@ -23,6 +25,7 @@
                     <div v-for="(item,index) in langList" :key="index" class="lang-list-item" @click="handleSetLanguage(item.value)">{{item.name}}</div>
                 </div>
             </div>
+            <!--个人信息-->
             <div class="user-info">
                 {{'个人信息'}}
                 <div class="info-list">
@@ -38,7 +41,9 @@
 import {reactive, defineComponent, onMounted, ref, toRefs,computed} from 'vue';
 import { useStore } from "vuex"
 import {useRouter} from "vue-router";
+import ChangeTheme from "@/components/changeTheme.vue";
 export default defineComponent({
+  components: {ChangeTheme},
   setup() {
     const store = useStore()
     const router = useRouter();
@@ -121,13 +126,13 @@ export default defineComponent({
       margin-right: 0.6rem;
       font-size: 0.18rem;
       position: relative;
-        .user-name{
+        .user-theme{
           width: 100px;
-          height: 50px;
+          // height: 50px;
           line-height: 50px;
           text-align: center;
           position: absolute;
-          right: 200px;
+          right: 300px;
           top: 0;
         }
         .the-language{
@@ -136,7 +141,7 @@ export default defineComponent({
             line-height: 50px;
             text-align: center;
             position: absolute;
-            right: 50px;
+            right: 150px;
             top: 0;
             cursor: pointer;
             display: flex;
@@ -171,7 +176,7 @@ export default defineComponent({
         }
         .user-info{
           position: absolute;
-          right: 0;
+          right: 50px;
           cursor: pointer;
           width: 100px;
           .info-list{

@@ -88,7 +88,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
         background-color: #fff;
         overflow: hidden;
         .content {
-            padding: 20px 80px 20px 20px;
+            padding: 40px 80px 20px 20px;
             /deep/(.el-input-group__append) {
               padding: 0;
               overflow: hidden;
@@ -99,6 +99,9 @@ const resetForm = (formEl: FormInstance | undefined) => {
             }
             /deep/.el-form-item__label{
              // color: #fff;
+            }
+            /deep/.el-form-item__content{
+              width: 160px;
             }
         }
     }
