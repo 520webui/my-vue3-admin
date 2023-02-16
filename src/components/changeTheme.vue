@@ -2,7 +2,7 @@
   <el-dropdown trigger="click" @command="handleSetTheme">
     <div>
       <el-tooltip effect="dark" content="主题模式" placement="bottom">
-        <el-icon :size="20">
+        <el-icon :size="20" style="margin-top: 15px;color: #fff">
           <MagicStick />
         </el-icon>
       </el-tooltip>
@@ -44,7 +44,10 @@ export default defineComponent({
     onMounted(()=>{})
     return{
       ...toRefs(dataMap),
-      handleSetTheme
+      handleSetTheme,
+      themeList,
+      MagicStick,
+      activeThemeName
     }
   }
 })
