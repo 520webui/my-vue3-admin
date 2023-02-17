@@ -6,11 +6,11 @@
              :class="{ active: $store.getters.activeTag.id === item.id}"
         >
             <div class="m-tag-text" @click="goToTag(item)">{{item.text}}
-                <el-icon v-if="item.id !== 1" class="m-icon-ios-close-empt" @click.stop="closeTags(item)"><Close /></el-icon>
+                <el-icon v-if="item.id !== 1" class="m-icon-ios-close-empt" style="position: absolute" @click.stop="closeTags(item)"><Close /></el-icon>
             </div>
         </div>
         <div class="tags-close-box">
-            <el-dropdown @command="handleTags">
+            <el-dropdown trigger="click" @command="handleTags">
                 <el-button size="small" type="primary">
                     标签选项
                     <el-icon class="el-icon--right">
@@ -20,6 +20,9 @@
                 <template #dropdown>
                     <el-dropdown-menu size="small">
                         <el-dropdown-item command="other">关闭其他</el-dropdown-item>
+                        <el-dropdown-item v-for="tag in theTags" :key="tag.name" :name="tag.name"
+                                      :selected="tag.name===theActiveTag.name" @click="handleSwitchTag(tag)">{{tag.name}}
+                        </el-dropdown-item>
                         <el-dropdown-item command="all">关闭所有</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -36,10 +39,15 @@
             const store = useStore();
             const router = useRouter();
             const route = useRoute();
-            const dataMap = reactive({})
+            const dataMap = reactive({
+              theTags:[],
+              theActiveTag:{},
+            })
             onMounted(()=>{
                 // store.dispatch('addTags', route);
                 closeAll();// 重刷页面的时候
+                dataMap.theTags=store.state.tags;
+                dataMap.theActiveTag=store.state.activeTag;
             })
             const closeTags = (item: any)=>{
                 store.dispatch('closeTag', item);
@@ -59,16 +67,25 @@
                 store.state.theTargetIndex = store.state.activeTag.id -1
                 router.push({ name: store.state.activeTag.name });
             }
+            const handleSwitchTag = (tag: any) => {
+              goToTag(tag);
+            }
             const closeOther=()=>{
                 store.dispatch('closeOther');
                 router.push({ name: store.state.activeTag.name });
+                dataMap.theTags = store.state.tags;
+                dataMap.theActiveTag = store.state.activeTag;
             }
             const closeAll=()=>{
                 router.push('/');
                 store.dispatch('closeAllTag');
+                dataMap.theTags = store.state.tags;
+                dataMap.theActiveTag = store.state.activeTag;
             }
-            const handleTags=(command: string)=>{
+            const handleTags=(command: any)=>{
+              if(command === 'other' || command === 'all'){
                 command === 'other' ? closeOther() : closeAll();
+              }
             }
             return{
                 ...toRefs(dataMap),
@@ -76,6 +93,7 @@
                 handleTags,
                 closeOther,
                 closeAll,
+                handleSwitchTag,
                 goToTag
             }
         }
@@ -86,7 +104,7 @@
   .coreTagsNav-wrap{
      height: 0.4rem;
      line-height: 0.4rem;
-     width: 100%;
+     // width: 100%;
      background-color: #727272;
      color: #fff;
      display: flex;
@@ -107,20 +125,21 @@
         color: #318BF5 !important;
       }
       .m-icon-ios-close-empty {
-
         color: #318BF5 !important;
       }
     }
-     .tags-close-box {
-          position: absolute;
-          right: 0;
-          top: 6px;
-          box-sizing: border-box;
-          padding-top: 1px;
-          text-align: center;
-          width: 110px;
-          height: 30px;
-          z-index: 10;
+    .tags-close-box {
+      position: absolute;
+      right: 0;
+      top: 0;
+      box-sizing: border-box;
+      padding-top: 10px;
+      text-align: center;
+      width: 110px;
+      height: 0.4rem;
+      z-index: 10;
+      overflow: hidden;
+      background-color: #727272;
     }
   }
 </style>

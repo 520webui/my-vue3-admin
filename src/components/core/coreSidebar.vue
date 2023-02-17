@@ -134,10 +134,10 @@ export default defineComponent({
         },
         {
           id: 13,
-          name: 'merkdown',
-          query: 'merkdown',
+          name: 'markdown',
+          query: 'markdown',
           icon: 'DataBoard',
-          text: t('menu.merkdown')
+          text: t('menu.markdown')
         },
         {
           id: 14,
