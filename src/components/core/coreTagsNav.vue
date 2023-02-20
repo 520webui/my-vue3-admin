@@ -20,8 +20,10 @@
                 <template #dropdown>
                     <el-dropdown-menu size="small">
                         <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-                        <el-dropdown-item v-for="tag in theTags" :key="tag.name" :name="tag.name"
-                                      :selected="tag.name===theActiveTag.name" @click="handleSwitchTag(tag)">{{tag.name}}
+                        <el-dropdown-item v-for="tag in theTags"
+                                          :key="tag.name"
+                                          :name="tag.name"
+                                          @click="handleSwitchTag(tag)">{{tag.name}}
                         </el-dropdown-item>
                         <el-dropdown-item command="all">关闭所有</el-dropdown-item>
                     </el-dropdown-menu>
