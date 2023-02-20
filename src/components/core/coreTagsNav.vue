@@ -121,6 +121,8 @@
       margin-top: 0.033rem;
       cursor: pointer;
       background-color: #4c5156;
+      overflow: visible;
+      white-space: nowrap;
     }
     .active {
       .m-tag-text {
