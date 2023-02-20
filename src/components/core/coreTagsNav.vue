@@ -23,6 +23,7 @@
                         <el-dropdown-item v-for="tag in theTags"
                                           :key="tag.name"
                                           :name="tag.name"
+                                          :class="{'clickIndex':$store.getters.activeTag.id === tag.id}"
                                           @click="handleSwitchTag(tag)">{{tag.name}}
                         </el-dropdown-item>
                         <el-dropdown-item command="all">关闭所有</el-dropdown-item>
@@ -146,4 +147,11 @@
       background-color: #727272;
     }
   }
+</style>
+<style lang="less">
+.clickIndex{
+  background: #318BF5 !important;
+  color: #fff;
+  margin-top: 5px !important;
+}
 </style>
