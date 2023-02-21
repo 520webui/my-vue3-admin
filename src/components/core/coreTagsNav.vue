@@ -18,7 +18,7 @@
                     </el-icon>
                 </el-button>
                 <template #dropdown>
-                    <el-dropdown-menu size="small">
+                    <el-dropdown-menu style="overflow-y: auto;max-height: 300px" size="small">
                         <el-dropdown-item command="other">关闭其他</el-dropdown-item>
                         <el-dropdown-item v-for="tag in theTags"
                                           :key="tag.name"
