@@ -82,6 +82,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
   align-items: center;
   width: 100%;
   min-height: 100%;
+  background-color: #112852;
     .login-card{
         border-radius: 20px;
         box-shadow: 0 0 10px #dcdfe6;

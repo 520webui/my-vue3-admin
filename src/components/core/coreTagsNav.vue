@@ -3,8 +3,7 @@
         <div v-for="(item,index) in $store.getters.tags"
              :key="index"
              class="tagsList-box"
-             :class="{ active: $store.getters.activeTag.id === item.id}"
-        >
+             :class="{ active: $store.getters.activeTag.id === item.id}">
             <div class="m-tag-text" @click="goToTag(item)">{{item.text}}
                 <el-icon v-if="item.id !== 1" class="m-icon-ios-close-empt" style="position: absolute" @click.stop="closeTags(item)"><Close /></el-icon>
             </div>
